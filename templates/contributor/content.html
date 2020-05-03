@@ -1,0 +1,75 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    {% include "contributor/head.html" %}
+    <!-- END: Head -->
+    <body class="app">
+        <!-- BEGIN: Mobile Menu -->
+        {% include "contributor/mobile.html" %}
+        <!-- END: Mobile Menu -->
+        <!-- BEGIN: Top Bar -->
+        <div class="border-b border-theme-24 -mt-10 md:-mt-5 -mx-3 sm:-mx-8 px-3 sm:px-8 pt-3 md:pt-0 mb-10">
+            <div class="top-bar-boxed flex items-center">
+                <!-- BEGIN: Logo -->
+                <a href="#" class="-intro-x hidden md:flex">
+                    <img alt="Midone Tailwind HTML Admin Template" class="w-6" src="{% static 'dist/images/logo.svg'%}">
+                    <span class="text-white text-lg ml-3"> Mid<span class="font-medium">one</span> </span>
+                </a>
+                <!-- END: Logo -->
+                <!-- BEGIN: Breadcrumb -->
+                <div class="-intro-x breadcrumb breadcrumb--light mr-auto"> </div>
+                <!-- END: Breadcrumb -->
+                <!-- BEGIN: Search -->
+                <!-- END: Search -->
+                <!-- BEGIN: Notifications -->
+                <!-- END: Notifications -->
+                <!-- BEGIN: Account Menu -->
+                {% include "contributor/account.html" %}
+                <!-- END: Account Menu -->
+            </div>
+        </div>
+        <!-- END: Top Bar -->
+        <!-- BEGIN: Top Menu -->
+        {% include "contributor/pc.html" %}
+        <!-- END: Top Menu -->
+        <!-- BEGIN: Content -->
+        <div class="content">
+            <div class="flex items-center mt-8">
+                <h2 class="text-lg font-medium mr-auto">
+                    Summernote
+                </h2>
+            </div>
+            <div class="grid grid-cols-12 gap-6 mt-5">
+                <!-- BEGIN: Simple Editor -->
+                <!-- END: Simple Editor -->
+                <!-- BEGIN: Standard Editor -->
+                <!-- END: Standard Editor -->
+                <!-- BEGIN: Fully Featured -->
+                <div class="col-span-12">
+                    <div class="box mt-5">
+                        <div class="flex flex-col sm:flex-row items-center p-5 border-b border-gray-200">
+                            <h2 class="font-medium text-base mr-auto">
+                                Write Content
+                            </h2>
+                        </div>
+                        <div class="p-5" id="full-featured">
+                            <div class="preview">
+                                <form method="post">
+                                    <textarea data-feature="all" class="summernote" name="editor"></textarea>
+                                    <button type="submit" class="button w-24 inline-block mr-1 mb-2 bg-theme-1 text-white inline-flex items-center"> Upload <i data-loading-icon="oval" data-color="white" class="w-4 h-4 ml-auto"></i> </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- END: Fully Featured -->
+            </div>
+        </div>
+        <!-- END: Content -->
+        <!-- BEGIN: JS Assets-->
+        <script src="{% static 'developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js'%}"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBG7gNHAhDzgYmq4-EHvM4bqW1DNj2UCuk&amp;libraries=places"></script>
+        <script src="{% static 'dist/js/app.js'%}"></script>
+        <!-- END: JS Assets-->
+    </body>
+</html>

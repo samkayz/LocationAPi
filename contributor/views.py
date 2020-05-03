@@ -90,4 +90,29 @@ def logout(request):
 
 @permission_required('is_superuser', login_url='/contributor/login')
 def profile(request):
-    return render(request, 'profile.html')
+    return render(request, 'contributor/profile.html')
+
+
+@permission_required('is_superuser', login_url='/contributor/login')
+def upload(request):
+    if request.method == 'POST':
+        csv_file = request.FILES['file']
+        if not csv_file.name.endswith('.csv'):
+            messages.error(request, 'File not csv')
+            return redirect('upload')
+        else:
+            decoded_file = csv_file.read().decode('utf-8')
+            io_string = io.StringIO(decoded_file)
+            # next(io_string)
+            for data in csv.reader(io_string, delimiter=',', quotechar='|'):
+                City.objects.update_or_create(city=data[0], lat=data[1], lng=data[2], state=data[3])
+            messages.success(request, 'Record Updated')
+            return redirect('upload')
+            # print(data[1])
+    else:
+        return render(request, 'contributor/upload.html')
+
+
+@permission_required('is_superuser', login_url='/contributor/login')
+def addContent(request):
+    return render(request, 'contributor/content.html')

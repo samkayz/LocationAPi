@@ -26,7 +26,7 @@ UserModel = get_user_model()
 
 
 def signin(request):
-    if request.user.is_authenticated:
+    if request.user.is_authenticated and request.user.is_superuser == False:
         return redirect('home')
     if request.method == "POST":
         email = request.POST['email']
@@ -88,11 +88,15 @@ def signup(request):
 
 @login_required(login_url='signin')
 def home(request):
+    if request.user.is_authenticated and request.user.is_superuser == True:
+        return redirect('/contributor/dashboard')
     return render(request, 'home.html')
 
 
 @login_required(login_url='signin')
 def profile(request):
+    if request.user.is_authenticated and request.user.is_superuser == True:
+        return redirect('/contributor/dashboard')
     return render(request, 'profile.html')
 
 

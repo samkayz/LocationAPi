@@ -1,0 +1,117 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    {% include "contributor/head.html" %}
+    <!-- END: Head -->
+    <body class="app">
+        <!-- BEGIN: Mobile Menu -->
+        {% include "contributor/mobile.html" %}
+        <!-- END: Mobile Menu -->
+        <!-- BEGIN: Top Bar -->
+        <div class="border-b border-theme-24 -mt-10 md:-mt-5 -mx-3 sm:-mx-8 px-3 sm:px-8 pt-3 md:pt-0 mb-10">
+            <div class="top-bar-boxed flex items-center">
+                <!-- BEGIN: Logo -->
+                <a href="#" class="-intro-x hidden md:flex">
+                    <img alt="Midone Tailwind HTML Admin Template" class="w-6" src="{% static 'dist/images/logo.svg'%}">
+                    <span class="text-white text-lg ml-3"> Mid<span class="font-medium">one</span> </span>
+                </a>
+                <!-- END: Logo -->
+                <!-- BEGIN: Breadcrumb -->
+                <div class="-intro-x breadcrumb breadcrumb--light mr-auto"> </div>
+                <!-- END: Breadcrumb -->
+                <!-- BEGIN: Search -->
+                
+                <!-- END: Search -->
+                <!-- BEGIN: Notifications -->
+                
+                <!-- END: Notifications -->
+                <!-- BEGIN: Account Menu -->
+                {% include "contributor/account.html" %}
+                <!-- END: Account Menu -->
+            </div>
+        </div>
+        <!-- END: Top Bar -->
+        <!-- BEGIN: Top Menu -->
+        {% include "contributor/pc.html" %}
+        <!-- END: Top Menu -->
+        <!-- BEGIN: Content -->
+        <div class="content">
+            <div class="intro-y flex items-center mt-8">
+                <h2 class="text-lg font-medium mr-auto">
+                    Dropzone
+                </h2>
+            </div>
+            <div class="grid grid-cols-12 gap-6 mt-5">
+                <div class="intro-y col-span-12 lg:col-span-6">
+                    <!-- BEGIN: Single File Upload -->
+                    
+                    <!-- END: Single File Upload -->
+                    <!-- BEGIN: Multiple File Upload -->
+                    <div class="intro-y box mt-5">
+                        <div class="flex flex-col sm:flex-row items-center p-5 border-b border-gray-200">
+                            <h2 class="font-medium text-base mr-auto">
+                                Multiple File Upload
+                            </h2>
+                        </div>
+                        <div class="p-5" id="multiple-file-upload">
+                            <div class="preview">
+                                <form action="/contributor/upload" method="POST" enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                    <div class="fallback">
+                                        <input type="file" name="file" multiple class="dropzone border-gray-200 border-dashed"/>
+                                    </div>
+                                    <div class="dz-message" data-dz-message>
+                                        <div class="text-lg font-medium">Drop files here or click to upload.</div>
+                                        <div class="text-gray-600"> This is just a demo dropzone. Selected files are <span class="font-medium">not</span> actually uploaded. </div>
+                                    </div>
+                                    <button type="submit" class="button w-24 inline-block mr-1 mb-2 bg-theme-1 text-white inline-flex items-center"> Upload <i data-loading-icon="oval" data-color="white" class="w-4 h-4 ml-auto"></i> </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END: Multiple File Upload -->
+                </div>
+                <div class="intro-y col-span-12 lg:col-span-6">
+                    <!-- BEGIN: File Type Validation -->
+                    <div class="intro-y box">
+                        <div class="flex flex-col sm:flex-row items-center p-5 border-b border-gray-200">
+                            <h2 class="font-medium text-base mr-auto">
+                                File Type Validation
+                            </h2>
+                            <div class="w-full sm:w-auto flex items-center sm:ml-auto mt-3 sm:mt-0">
+                                <div class="mr-3">Show code</div>
+                                <input data-target="#file-type-validation" class="show-code input input--switch border" type="checkbox">
+                            </div>
+                        </div>
+                        <div class="p-5" id="file-type-validation">
+                            <div class="preview">
+                                <form data-file-types="image/jpeg|image/png|image/jpg" action="http://midone.left4code.com/file-upload" class="dropzone border-gray-200 border-dashed">
+                                    <div class="fallback">
+                                        <input name="file" type="file" />
+                                    </div>
+                                    <div class="dz-message" data-dz-message>
+                                        <div class="text-lg font-medium">Drop files here or click to upload.</div>
+                                        <div class="text-gray-600"> This is just a demo dropzone. Selected files are <span class="font-medium">not</span> actually uploaded. </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="source-code hidden">
+                                <button data-target="#copy-file-type-validation" class="copy-code button button--sm border flex items-center text-gray-700"> <i data-feather="file" class="w-4 h-4 mr-2"></i> Copy code </button>
+                                <div class="overflow-y-auto h-64 mt-3">
+                                    <pre class="source-preview" id="copy-file-type-validation"> <code class="text-xs p-0 rounded-md html pl-5 pt-8 pb-4 -mb-10 -mt-10"> HTMLOpenTagform data-file-types=&quot;image/jpeg|image/png|image/jpg&quot; action=&quot;/file-upload&quot; class=&quot;dropzone border-gray-200 border-dashed&quot;HTMLCloseTag HTMLOpenTagdiv class=&quot;fallback&quot;HTMLCloseTag HTMLOpenTaginput name=&quot;file&quot; type=&quot;file&quot; /HTMLCloseTag HTMLOpenTag/divHTMLCloseTag HTMLOpenTagdiv class=&quot;dz-message&quot; data-dz-messageHTMLCloseTag HTMLOpenTagdiv class=&quot;text-lg font-medium&quot;HTMLCloseTagDrop files here or click to upload.HTMLOpenTag/divHTMLCloseTag HTMLOpenTagdiv class=&quot;text-gray-600&quot;HTMLCloseTag This is just a demo dropzone. Selected files are HTMLOpenTagspan class=&quot;font-medium&quot;HTMLCloseTagnotHTMLOpenTag/spanHTMLCloseTag actually uploaded. HTMLOpenTag/divHTMLCloseTag HTMLOpenTag/divHTMLCloseTag HTMLOpenTag/formHTMLCloseTag </code> </pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END: File Type Validation -->
+                </div>
+            </div>
+        </div>
+        <!-- END: Content -->
+        <!-- BEGIN: JS Assets-->
+        <script src="../developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBG7gNHAhDzgYmq4-EHvM4bqW1DNj2UCuk&amp;libraries=places"></script>
+        <script src="{% static 'dist/js/app.js'%}"></script>
+        <!-- END: JS Assets-->
+    </body>
+</html>
